@@ -31,17 +31,33 @@ def execute(sql,args=()):
 st.set_page_config(page_title='مطاعم أسماك وادي النيل',page_icon='🐟',layout='wide',initial_sidebar_state='expanded')
 init_db()
 st.markdown('''<style>
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
-html,body,[class*="css"]{font-family:'Tajawal',sans-serif;direction:rtl}
-.stApp{background:#f5f9fc;color:#12324a}.block-container{max-width:1300px;padding-top:1.1rem}
-section[data-testid="stSidebar"]{background:#eaf4fa;border-left:1px solid #d7e7f1}
-.hero{background:linear-gradient(120deg,#063a61,#0879a5);border-radius:24px;padding:28px 32px;color:white;box-shadow:0 12px 30px #063a6120;margin-bottom:22px}
-.hero h1{font-size:2.2rem;font-weight:900;margin:0}.hero p{font-size:1.15rem;margin:.35rem 0 0;color:#c8f2ff}
-.eyebrow{color:#00a4d6;font-weight:800;letter-spacing:.4px}.item-card{background:white;border:1px solid #dceaf2;border-radius:18px;padding:14px;height:100%;box-shadow:0 5px 18px #12324a0a}
-.price{font-size:1.15rem;font-weight:900;color:#007da8}.branch{background:white;border:1px solid #dceaf2;border-radius:15px;padding:16px;margin-bottom:8px}
-div.stButton>button,div.stFormSubmitButton>button{background:#087da8;color:white;border:0;border-radius:10px;font-weight:800;min-height:2.5rem}
-div.stButton>button:hover,div.stFormSubmitButton>button:hover{background:#075a7c;color:white}
-[data-testid="stMetric"]{background:white;border:1px solid #dceaf2;padding:12px;border-radius:14px}
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap');
+:root{--navy:#073b5c;--blue:#087da8;--cyan:#16b8d4;--ink:#18384c;--muted:#698293;--line:#dceaf0}
+html,body,[class*="css"],button,input,textarea{font-family:'Tajawal',sans-serif!important;direction:rtl}
+.stApp{background:linear-gradient(180deg,#f7fbfd 0%,#eef6fa 100%);color:var(--ink)}
+.block-container{max-width:1360px;padding-top:1.2rem;padding-bottom:2rem}
+section[data-testid="stSidebar"]{background:#fff;border-left:1px solid var(--line)}
+section[data-testid="stSidebar"] [data-testid="stImage"]{padding:8px}
+section[data-testid="stSidebar"] .stButton>button{background:#f3f8fb;color:var(--navy);border:1px solid #e0edf3;text-align:right;border-radius:12px;padding:12px 16px;font-weight:800}
+section[data-testid="stSidebar"] .stButton>button:hover{background:#e3f5fa;border-color:#a8deeb}
+.hero{position:relative;overflow:hidden;background:linear-gradient(115deg,#052f4b 0%,#075b80 60%,#0799b8 100%);border-radius:26px;padding:38px 40px;color:#fff;box-shadow:0 18px 40px #063b5b20;margin:6px 0 28px;border:1px solid #ffffff30}
+.hero:after{content:'🐟';position:absolute;left:34px;top:12px;font-size:5rem;opacity:.13;transform:rotate(-12deg)}
+.hero h1{font-size:clamp(1.8rem,3vw,3rem);font-weight:900;line-height:1.35;margin:5px 0;color:#fff}
+.hero p{font-size:1.15rem;margin:.5rem 0 0;color:#d8f6ff;font-weight:500}
+.eyebrow{color:#8feaff;font-weight:900;font-size:1rem;margin-bottom:5px}
+h1,h2,h3,h4{color:var(--navy);font-weight:900}
+.item-card,.branch{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;height:100%;box-shadow:0 8px 26px #12324a08}
+.price{font-size:1.25rem;font-weight:900;color:#007fa8}
+.branch{margin-bottom:12px;line-height:1.9}
+a{color:#007fa8!important;font-weight:800;text-decoration:none!important}
+div.stButton>button,div.stFormSubmitButton>button{background:linear-gradient(110deg,#087da8,#079cbd);color:white;border:0;border-radius:12px;font-weight:900;min-height:2.8rem;box-shadow:0 5px 12px #087da81a}
+div.stButton>button:hover,div.stFormSubmitButton>button:hover{background:linear-gradient(110deg,#075778,#087da8);color:white;border:0}
+[data-testid="stMetric"]{background:#fff;border:1px solid var(--line);padding:16px;border-radius:16px;box-shadow:0 5px 18px #12324a08}
+[data-testid="stMetricValue"]{color:var(--blue);font-weight:900}
+[data-testid="stTabs"] button{font-family:'Tajawal',sans-serif;font-weight:800;border-radius:10px}
+[data-testid="stForm"]{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}
+hr{border-color:#dceaf0}
+@media(max-width:700px){.hero{padding:25px 22px;border-radius:20px}.hero:after{font-size:3.5rem;left:12px}.hero p{font-size:1rem}.block-container{padding-left:1rem;padding-right:1rem}}
 </style>''',unsafe_allow_html=True)
 
 if 'cart' not in st.session_state: st.session_state.cart={}
@@ -128,10 +144,10 @@ elif page=='لوحة الإدارة':
         with st.form('admin_login'):
             username=st.text_input('اسم المستخدم'); password=st.text_input('كلمة المرور',type='password'); login=st.form_submit_button('تسجيل الدخول')
         if login:
-            if username==os.getenv('ADMIN_USERNAME','admin') and password==os.getenv('ADMIN_PASSWORD','WadiNile@2026'):
+            if os.getenv('ADMIN_PASSWORD') and username==os.getenv('ADMIN_USERNAME','admin') and password==os.getenv('ADMIN_PASSWORD'):
                 st.session_state.admin=True; st.rerun()
             else: st.error('بيانات الدخول غير صحيحة.')
-        st.warning('قبل النشر العام غيّر بيانات دخول الإدارة من إعدادات الاستضافة.')
+        st.warning('اضبط ADMIN_USERNAME وADMIN_PASSWORD في إعدادات Secrets قبل النشر؛ لوحة الإدارة مغلقة افتراضيًا إذا لم تُضبط كلمة المرور.')
     else:
         if st.button('تسجيل الخروج'): st.session_state.admin=False; st.rerun()
         orders=query('SELECT * FROM orders ORDER BY id DESC LIMIT 200')
