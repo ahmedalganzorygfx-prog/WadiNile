@@ -31,33 +31,33 @@ def execute(sql,args=()):
 st.set_page_config(page_title='مطاعم أسماك وادي النيل',page_icon='🐟',layout='wide',initial_sidebar_state='expanded')
 init_db()
 st.markdown('''<style>
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap');
-:root{--navy:#073b5c;--blue:#087da8;--cyan:#16b8d4;--ink:#18384c;--muted:#698293;--line:#dceaf0}
-html,body,[class*="css"],button,input,textarea{font-family:'Tajawal',sans-serif!important;direction:rtl}
-.stApp{background:linear-gradient(180deg,#f7fbfd 0%,#eef6fa 100%);color:var(--ink)}
-.block-container{max-width:1360px;padding-top:1.2rem;padding-bottom:2rem}
-section[data-testid="stSidebar"]{background:#fff;border-left:1px solid var(--line)}
-section[data-testid="stSidebar"] [data-testid="stImage"]{padding:8px}
-section[data-testid="stSidebar"] .stButton>button{background:#f3f8fb;color:var(--navy);border:1px solid #e0edf3;text-align:right;border-radius:12px;padding:12px 16px;font-weight:800}
-section[data-testid="stSidebar"] .stButton>button:hover{background:#e3f5fa;border-color:#a8deeb}
-.hero{position:relative;overflow:hidden;background:linear-gradient(115deg,#052f4b 0%,#075b80 60%,#0799b8 100%);border-radius:26px;padding:38px 40px;color:#fff;box-shadow:0 18px 40px #063b5b20;margin:6px 0 28px;border:1px solid #ffffff30}
-.hero:after{content:'🐟';position:absolute;left:34px;top:12px;font-size:5rem;opacity:.13;transform:rotate(-12deg)}
-.hero h1{font-size:clamp(1.8rem,3vw,3rem);font-weight:900;line-height:1.35;margin:5px 0;color:#fff}
-.hero p{font-size:1.15rem;margin:.5rem 0 0;color:#d8f6ff;font-weight:500}
-.eyebrow{color:#8feaff;font-weight:900;font-size:1rem;margin-bottom:5px}
-h1,h2,h3,h4{color:var(--navy);font-weight:900}
-.item-card,.branch{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;height:100%;box-shadow:0 8px 26px #12324a08}
-.price{font-size:1.25rem;font-weight:900;color:#007fa8}
-.branch{margin-bottom:12px;line-height:1.9}
-a{color:#007fa8!important;font-weight:800;text-decoration:none!important}
-div.stButton>button,div.stFormSubmitButton>button{background:linear-gradient(110deg,#087da8,#079cbd);color:white;border:0;border-radius:12px;font-weight:900;min-height:2.8rem;box-shadow:0 5px 12px #087da81a}
-div.stButton>button:hover,div.stFormSubmitButton>button:hover{background:linear-gradient(110deg,#075778,#087da8);color:white;border:0}
-[data-testid="stMetric"]{background:#fff;border:1px solid var(--line);padding:16px;border-radius:16px;box-shadow:0 5px 18px #12324a08}
-[data-testid="stMetricValue"]{color:var(--blue);font-weight:900}
-[data-testid="stTabs"] button{font-family:'Tajawal',sans-serif;font-weight:800;border-radius:10px}
-[data-testid="stForm"]{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}
-hr{border-color:#dceaf0}
-@media(max-width:700px){.hero{padding:25px 22px;border-radius:20px}.hero:after{font-size:3.5rem;left:12px}.hero p{font-size:1rem}.block-container{padding-left:1rem;padding-right:1rem}}
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
+:root{--navy:#082f49;--deep:#061f33;--sea:#087e9d;--cyan:#18b7c9;--foam:#eaf8fa;--ink:#19384a;--muted:#66808f;--line:#dce9ed;--gold:#d8ad62}
+html,body,[class*="css"],button,input,textarea{font-family:'Cairo',sans-serif!important;direction:rtl}
+html,body{direction:rtl;text-align:right}.stApp{background:#f5f9fa;color:var(--ink);direction:rtl}
+.block-container{max-width:1420px;padding-top:1.1rem;padding-bottom:2.2rem}
+[data-testid="stAppViewContainer"]>.main,[data-testid="stHorizontalBlock"],[data-testid="column"]{direction:rtl}
+[data-testid="column"],[data-testid="stMarkdownContainer"],[data-testid="stCaptionContainer"]{text-align:right}
+section[data-testid="stSidebar"]{background:#fff;border-left:1px solid var(--line);border-right:0;direction:rtl}section[data-testid="stSidebar"]>div{direction:rtl}
+section[data-testid="stSidebar"] [data-testid="stImage"]{padding:8px;border-radius:18px}
+section[data-testid="stSidebar"] .stButton>button{background:#f5fafb;color:var(--navy);border:1px solid #e0edf0;text-align:right;direction:rtl;border-radius:13px;padding:12px 16px;font-weight:800;transition:all .2s}
+section[data-testid="stSidebar"] .stButton>button:hover{background:#e7f7f9;border-color:#8bd5df;transform:translateX(-2px)}
+.hero{position:relative;overflow:hidden;isolation:isolate;background:radial-gradient(circle at 12% 15%,#1ab4c933,transparent 30%),linear-gradient(115deg,#061f33 0%,#073e5b 52%,#087e9d 100%);border-radius:30px;padding:clamp(28px,4vw,58px);color:#fff;box-shadow:0 24px 60px #062e441e;margin:8px 0 30px;border:1px solid #ffffff26;text-align:right}
+.hero:before{content:'';position:absolute;z-index:-1;width:310px;height:310px;border:1px solid #ffffff1b;border-radius:50%;left:-95px;bottom:-190px;box-shadow:0 0 0 32px #ffffff08,0 0 0 64px #ffffff06}
+.hero:after{content:'وادي النيل';position:absolute;z-index:-1;left:28px;bottom:8px;color:#ffffff0d;font-size:clamp(2rem,5vw,5rem);font-weight:900;transform:rotate(-8deg)}
+.hero h1{font-size:clamp(2rem,4vw,3.7rem);font-weight:900;line-height:1.35;margin:7px 0;color:#fff;letter-spacing:-.5px}.hero p{font-size:clamp(1rem,1.5vw,1.25rem);margin:.65rem 0 0;color:#d9f7fb;font-weight:600;line-height:1.9}
+.eyebrow{display:inline-block;color:#8feaff;font-weight:900;font-size:1rem;margin-bottom:6px;background:#ffffff12;border:1px solid #ffffff24;border-radius:99px;padding:5px 14px}
+h1,h2,h3,h4{color:var(--navy);font-weight:900;letter-spacing:-.2px}.item-card,.branch{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;height:100%;box-shadow:0 8px 28px #12324a08}
+[data-testid="stVerticalBlockBorderWrapper"]{border-color:#e0ebef!important;border-radius:22px!important;background:#fff;box-shadow:0 9px 28px #103d5108;overflow:hidden}
+[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stImage"] img{border-radius:15px;object-fit:cover}.price{font-size:1.35rem;font-weight:900;color:var(--sea);margin:.3rem 0}
+.branch{margin-bottom:12px;line-height:2;border-top:3px solid var(--cyan)}a{color:#087e9d!important;font-weight:800;text-decoration:none!important}a:hover{color:#064b68!important}
+div.stButton>button,div.stFormSubmitButton>button{background:linear-gradient(110deg,#087e9d,#13a9bd);color:#fff;border:0;border-radius:13px;font-weight:900;min-height:2.85rem;box-shadow:0 7px 16px #087e9d1b;transition:all .18s}
+div.stButton>button:hover,div.stFormSubmitButton>button:hover{background:linear-gradient(110deg,#063c58,#087e9d);color:white;border:0;transform:translateY(-1px)}
+[data-testid="stMetric"]{background:#fff;border:1px solid var(--line);padding:18px;border-radius:18px;box-shadow:0 6px 22px #12324a08;text-align:right}[data-testid="stMetricLabel"],[data-testid="stMetricValue"]{text-align:right;justify-content:flex-start}[data-testid="stMetricValue"]{color:var(--sea);font-weight:900}
+[data-testid="stTabs"] [role="tablist"]{direction:rtl;gap:8px}[data-testid="stTabs"] button{font-family:'Cairo',sans-serif;font-weight:800;border-radius:11px;padding:9px 16px}
+[data-testid="stForm"]{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;direction:rtl}input,textarea{direction:rtl!important;text-align:right!important}[data-baseweb="select"]>div{direction:rtl;text-align:right}[data-testid="stDataFrame"]{direction:rtl}
+[data-testid="stAlert"]{direction:rtl;text-align:right;border-radius:14px}hr{border-color:#dceaf0;margin:1.5rem 0}footer{visibility:hidden}
+@media(max-width:700px){.hero{padding:26px 22px;border-radius:22px}.hero:after{font-size:2.5rem;left:10px}.hero p{font-size:1rem}.block-container{padding-left:1rem;padding-right:1rem}[data-testid="stHorizontalBlock"]{gap:.6rem}}
 </style>''',unsafe_allow_html=True)
 
 if 'cart' not in st.session_state: st.session_state.cart={}
@@ -73,7 +73,7 @@ with st.sidebar:
         if st.button(p,use_container_width=True,key='nav_'+p): go(p)
     st.caption('نسخة معاينة — يُرجى مراجعة الأسعار وبيانات الفروع قبل النشر الرسمي.')
 
-st.markdown('<div class="hero"><div class="eyebrow" style="color:#8fe8ff">سلسلة مطاعم</div><h1>مطاعم أسماك وادي النيل</h1><p>البحر بروح مصرية · مذاق بحري يجمع العائلة</p></div>',unsafe_allow_html=True)
+st.markdown('<div class="hero"><div class="eyebrow">سلسلة مطاعم للمأكولات البحرية</div><h1>مطاعم أسماك وادي النيل</h1><p>البحر بروح مصرية · مذاق بحري يجمع العائلة</p></div>',unsafe_allow_html=True)
 page=st.session_state.page
 
 if page in ['الرئيسية','قائمة الطعام']:
